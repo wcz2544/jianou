@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="见瓯——从一条古街、一口家乡味，认识建州。">
+  <meta name="theme-color" content="#173f35">
+  <title>见瓯｜从一条古街、一口家乡味，认识建州</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="见瓯首页">
+      <span class="brand-mark" aria-hidden="true">瓯</span>
+      <span><strong>见瓯</strong><small>JIAN'OU STORIES</small></span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span><span class="sr-only">打开导航</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="#know">认识建瓯</a>
+      <a href="#explore">逛建瓯</a>
+      <a href="#taste">吃在建瓯</a>
+      <a href="#stories">建瓯故事</a>
+      <a class="nav-cta" href="#routes">开始漫游</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">福建 · 建瓯 / 古称建州</p>
+        <h1 id="hero-title">一城山水，<br><em>千年建州。</em></h1>
+        <p class="hero-copy">从一条古街、一口家乡味，认识建州。这里有古城的砖瓦、北苑的茶香，也有平常巷陌里鲜活的建瓯生活。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#explore">探索八种建瓯</a>
+          <a class="text-link" href="#routes">查看主题路线 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal" aria-label="以城门、山水和茶盏为意象的建瓯插画">
+        <div class="sun"></div>
+        <div class="mountain mountain-back"></div>
+        <div class="mountain mountain-front"></div>
+        <div class="gate"><i></i><i></i><i></i></div>
+        <p>建州古城</p>
+      </div>
+      <div class="hero-note"><span>27.03°N</span><span>118.32°E</span><span>向下发现 ↓</span></div>
+    </section>
+
+    <section class="intro section" id="know">
+      <div class="section-heading reveal">
+        <p class="eyebrow">MEET JIAN'OU · 认识建瓯</p>
+        <h2>福建的“建”，<br>从这里走来。</h2>
+      </div>
+      <div class="intro-copy reveal">
+        <p class="lead">建瓯，旧称建州。历史不是停在书里的年份，而是藏在城门、街巷、茶盏和一代代人的日常里。</p>
+        <p>2026 年 3 月，建瓯建州古城景区被确定为国家 4A 级旅游景区。我们从古城出发，也把目光投向乡村山水、非遗手艺与今天的地方生活。</p>
+        <div class="facts" aria-label="建瓯速览">
+          <div><strong>4A</strong><span>建州古城景区</span></div>
+          <div><strong>8</strong><span>主题内容板块</span></div>
+          <div><strong>3</strong><span>首批精选路线</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore section" id="explore">
+      <div class="section-heading compact reveal">
+        <p class="eyebrow">EIGHT WAYS TO SEE · 八种建瓯</p>
+        <h2>你想从哪里开始？</h2>
+        <p>选一个主题，先认识一小块建瓯。</p>
+      </div>
+      <div class="filters reveal" role="group" aria-label="内容筛选">
+        <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button class="filter" type="button" data-filter="city">古城</button>
+        <button class="filter" type="button" data-filter="food">味道</button>
+        <button class="filter" type="button" data-filter="culture">文化</button>
+        <button class="filter" type="button" data-filter="nature">山水</button>
+      </div>
+      <div class="story-grid" id="story-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="feature section" id="taste">
+      <div class="feature-visual reveal" aria-hidden="true">
+        <span class="steam steam-one"></span><span class="steam steam-two"></span>
+        <div class="bowl"><i></i></div>
+        <p>一口建州味</p>
+      </div>
+      <div class="feature-copy reveal">
+        <p class="eyebrow">TASTE OF JIANZHOU · 建州味道</p>
+        <h2>早餐桌上，<br>最懂一座城。</h2>
+        <p>光饼、芋饺、板鸭、扁肉、豆浆粉……食物背后是原料、做法，也是许多人关于家乡最直接的记忆。</p>
+        <ul class="taste-list">
+          <li><span>01</span><strong>早餐小吃</strong><small>豆浆粉 · 粉丸 · 粿包</small></li>
+          <li><span>02</span><strong>地方菜</strong><small>大肠粿 · 笋宴 · 珍珠纳底</small></li>
+          <li><span>03</span><strong>时令物产</strong><small>冬笋 · 锥栗 · 吉阳四宝</small></li>
+        </ul>
+        <p class="status-note">店铺、价格与营业信息将在实地核验后更新。</p>
+      </div>
+    </section>
+
+    <section class="routes section" id="routes">
+      <div class="section-heading compact reveal">
+        <p class="eyebrow">CURATED ROUTES · 主题路线</p>
+        <h2>把故事串成一段路。</h2>
+        <p>以下为内容策划路线，正式出发前请再次核验开放与交通信息。</p>
+      </div>
+      <div class="route-list">
+        <article class="route-card reveal">
+          <div class="route-number">01</div>
+          <div><p class="tag">半日 · 古城漫步</p><h3>古城与家乡味</h3><p>从城门进入街巷，在建筑、老店与一顿建州味之间认识古城。</p></div>
+          <div class="route-stops"><span>通仙门</span><i></i><span>铁井栏</span><i></i><span>紫芝街</span><i></i><span>地方小吃</span></div>
+        </article>
+        <article class="route-card reveal">
+          <div class="route-number">02</div>
+          <div><p class="tag">专题 · 茶文化</p><h3>跟着一片茶叶</h3><p>从北苑地名、御焙遗址到今天的茶人，看一片叶子如何连接古今。</p></div>
+          <div class="route-stops"><span>北苑</span><i></i><span>茶园</span><i></i><span>点茶</span><i></i><span>茶人故事</span></div>
+        </article>
+        <article class="route-card reveal">
+          <div class="route-number">03</div>
+          <div><p class="tag">一日 · 山水乡村</p><h3>走出城墙以后</h3><p>从湖畔、森林到古村，看到建瓯更辽阔的自然和日常。</p></div>
+          <div class="route-stops"><span>北津湖</span><i></i><span>万木林</span><i></i><span>古村落</span><i></i><span>乡村生活</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-section" id="stories">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <blockquote class="reveal">我们想记录的不只是“有什么”，<br>更是建瓯人怎样生活在这里。</blockquote>
+      <p>同一个地方的过去与现在 · 一家老店的一天 · 返乡青年的选择</p>
+    </section>
+
+    <section class="practical section">
+      <div class="section-heading compact reveal">
+        <p class="eyebrow">BEFORE YOU GO · 出发以前</p>
+        <h2>把不确定的信息，留到出发前确认。</h2>
+      </div>
+      <div class="notice-grid reveal">
+        <div><span>01</span><h3>开放信息</h3><p>景点、展馆和保护地开放范围可能调整，请以当天官方信息为准。</p></div>
+        <div><span>02</span><h3>活动日期</h3><p>节庆、演艺与集章活动分为“当期活动”和“往期回顾”，请勿混淆。</p></div>
+        <div><span>03</span><h3>素材与故事</h3><p>史实、传说、个人体验分别标注；照片和采访获得授权后再发布。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><a class="brand footer-brand" href="#top"><span class="brand-mark">瓯</span><span><strong>见瓯</strong><small>JIAN'OU STORIES</small></span></a><p>从一条古街、一口家乡味，认识建州。</p></div>
+    <div><strong>浏览</strong><a href="#know">认识建瓯</a><a href="#explore">八种建瓯</a><a href="#routes">主题路线</a></div>
+    <div><strong>说明</strong><p>本站为首版内容原型。实时开放、交通、价格与活动信息以上线前核验结果为准。</p></div>
+    <p class="copyright">© <span id="year"></span> 见瓯 · 家乡宣传网页</p>
+  </footer>
+</body>
+</html>
