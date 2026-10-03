@@ -1,5 +1,5 @@
 // 首页所有可点击入口共用这一份主题数据，后续扩写时只需要修改对应条目。
-const commonNote = "本页依据当前策划资料整理，用于首版内容介绍。开放时间、门票、交通、预约、店铺价格和当期活动可能变化，正式出发前请以官方最新信息和实地核验结果为准。";
+const commonNote = "本页为公开资料整理形成的初步介绍，不替代景区、场馆、商家或管理单位的实时通知。开放时间、门票、交通、预约、价格和当期活动可能变化，正式出发前请再次向相关单位核验。";
 
 const topics = {
   "ancient-city-scenic": {
@@ -109,6 +109,168 @@ const topics = {
   "returning-youth": { title: "返乡青年的选择", eyebrow: "RETURNING HOME · 人物故事", summary: "从个人选择理解家乡的新工作、新生活与新可能。", meta: ["返乡", "青年", "人物采访"], intro: "返乡不是单一成功模板，每个人的原因、困难和路径都不同。", description: "采访将围绕为什么回来、正在做什么、遇到什么现实问题，以及如何看待家乡变化展开。", highlights: ["尊重个人真实动机", "记录工作和生活现场", "呈现困难而非只写励志", "采访内容交由本人确认"], related: ["memory", "industry", "tea-people"] }
 };
 
+// 资料包按主题共享可靠来源；每个详情页再叠加自己的专题焦点，避免只有一段通用占位文字。
+const researchBundles = {
+  overview: {
+    facts: [
+      { title: "古城的新等级", text: "福建省文化和旅游厅于2026年3月26日正式确定建瓯建州古城景区为国家4A级旅游景区，景区以铁井栏—紫芝街历史文化街区为核心。" },
+      { title: "保护与活化同步", text: "建瓯自2022年启动古城保护活化工程，修缮街区的同时引入博物馆、非遗体验和日常商业，让历史空间继续服务今天的城市生活。" }
+    ],
+    boundary: "本页的主题分类与路线顺序属于网站编辑方案，不等同于官方游览线路；景点之间的距离、预计用时和接待条件仍需实地核验。",
+    sources: [
+      { title: "福建省文旅厅：确定建州古城景区为国家4A级旅游景区", date: "2026-03-26", scope: "景区等级与官方名称", url: "https://wlt.fujian.gov.cn/zwgk/tzgg/gggs/202603/t20260326_7116118.htm" },
+      { title: "福建省文旅厅：福建省新增4家国家4A级旅游景区", date: "2026-03-30", scope: "景区核心范围与主要文化地标", url: "https://wlt.fujian.gov.cn/zwgk/tzgg/gggs/202603/t20260330_7117179.htm" },
+      { title: "建瓯新闻网：我在建瓯邂逅千年古城", date: "2026-03-02", scope: "古城保护活化的过程与当代使用", url: "https://www.jrjonews.com/2026-03/02/content_2315266.htm" }
+    ]
+  },
+  ancient: {
+    facts: [
+      { title: "核心街区", text: "官方介绍把铁井栏—紫芝街列为建州古城景区核心，并串联朱文公祠、五经博士府、建安书院等朱子文化地标。" },
+      { title: "修缮不是冻结", text: "街区保护保留传统街巷尺度与空间形态，同时进行了管线下地、路面铺贴和木结构修复，今天仍有居民、展馆与店铺共同使用。" }
+    ],
+    boundary: "古城页面必须区分历史遗存、原址修缮、原貌复建和现代新增展示；建筑年代、人物故事与民间传说不能互相替代，单体建筑信息还需结合文物名录或现场铭牌核对。",
+    sources: [
+      { title: "福建省文旅厅：建州古城景区获评国家4A级", date: "2026-03-26", scope: "景区等级", url: "https://wlt.fujian.gov.cn/zwgk/tzgg/gggs/202603/t20260326_7116118.htm" },
+      { title: "建瓯新闻网：我在建瓯邂逅千年古城", date: "2026-03-02", scope: "古城修缮、历史建筑与活化利用", url: "https://www.jrjonews.com/2026-03/02/content_2315266.htm" },
+      { title: "建瓯新闻网：读历史文化 看古街繁华", date: "2023-10-31", scope: "铁井栏—紫芝街的历史脉络与街区现状", url: "https://www.jrjonews.com/2023-10/31/content_1597993.htm" },
+      { title: "建瓯新闻网：铁井栏—紫芝街历史文化街区开街", date: "2023-05-15", scope: "项目范围、修缮原则与开街记录", url: "https://www.jrjonews.com/2023-05/15/content_1525002.htm" }
+    ]
+  },
+  food: {
+    facts: [
+      { title: "味道来自日常", text: "公开的建瓯概况把光饼、板鸭、豆浆粉、芋饺、扁肉等列入地方饮食线索；网页据此先搭建早餐、地方菜和时令物产三个入口。" },
+      { title: "从一道菜讲做法", text: "建瓯融媒体对“大肠炒光饼”的介绍记录了卤制、切片和合炒等过程，说明地方味道既与食材有关，也与具体处理方法有关。" }
+    ],
+    boundary: "地方食物存在家庭做法、店铺做法与名称差异。当前页面介绍品类，不构成餐馆排名；具体门店、价格、营业时间、过敏原与卫生信息必须在发布推荐前逐项核验。",
+    sources: [
+      { title: "福建省商务厅：县域重点产业链招商手册·建瓯", date: "持续更新页面", scope: "建瓯概况、物产与地方美食线索", url: "https://fdi.swt.fj.gov.cn/county-show-409.html" },
+      { title: "建瓯新闻网：大肠炒光饼", date: "2025-07-01", scope: "菜品特点与基本制作过程", url: "https://www.jrjonews.com/2025-07/01/content_2228818.htm" }
+    ]
+  },
+  tea: {
+    facts: [
+      { title: "遗址把茶史落到地点", text: "北苑御焙遗址位于东峰镇裴桥村焙前自然村一带。公开资料将其介绍为官办茶事遗址，并记录摩崖石刻、贡茶制度与周边展示空间。" },
+      { title: "传统仍在被演示", text: "2025年的报道记录了凤冈别墅宋式点茶非遗传习所，通过器具展示、技艺讲解与现场体验让点茶从文字史料进入可观察的过程。" }
+    ],
+    boundary: "茶史中的贡茶制度、茶类名称和制作方法有明确时代背景，不能直接等同于今天销售的所有产品；遗址参观、茶园进入和点茶体验均需按当期接待信息核实。",
+    sources: [
+      { title: "建瓯新闻网：访北苑御焙遗址 寻千年贡茶芳踪", date: "2023-08-07", scope: "遗址位置、历史价值与展示空间", url: "https://www.jrjonews.com/2023-08/07/content_1559130.htm" },
+      { title: "建瓯新闻网：宋代“顶流”茶饮的前世今生", date: "2022-06-28", scope: "北苑茶历史与遗址保护信息", url: "https://www.jrjonews.com/2022-06/28/content_1402039.htm" },
+      { title: "建瓯新闻网：凤冈别墅宋式点茶非遗传习所", date: "2025-03-28", scope: "点茶传习与体验场景", url: "https://www.jrjonews.com/2025-03/28/content_2191459.htm" },
+      { title: "建瓯新闻网：惊蛰喊山承古韵 北苑贡茶启新程", date: "2026-03-06", scope: "北苑喊山与当代茶文化活动", url: "https://www.jrjonews.com/2026-03/06/content_2317266.htm" }
+    ]
+  },
+  craft: {
+    facts: [
+      { title: "挑幡的活态传承", text: "福建省政府专题资料将建瓯挑幡列为首批国家级非物质文化遗产，介绍了长竹竿、幡面与配重组成的表演器具，以及进校园等传承方式。" },
+      { title: "手艺也连接产业", text: "建瓯根雕报道呈现了从选材、构思到雕刻的生产链条。它既是地方手艺，也是当代从业者持续经营的产业。" }
+    ],
+    boundary: "非遗项目名称、保护级别和代表性传承人应以官方名录为准；展示活动、校园课程和工坊接待并非全年固定开放，传说故事也需明确标为口述或民间叙事。",
+    sources: [
+      { title: "福建省政府：在坚守中前行——建瓯挑幡的活态传承之路", date: "2023-09-19", scope: "项目级别、器具特点与传承方式", url: "https://www.fj.gov.cn/zwgk/ztzl/sxzygwzxsgzx/sdjj/wvjj/202309/t20230919_6260608.htm" },
+      { title: "福建省财政厅：2026年国家级非遗代表性传承人补助名单", date: "2026-01", scope: "中幡（建瓯挑幡）代表性传承人名录", url: "https://czt.fj.gov.cn/zwgk/czzj/202601/P020260106385805670298.pdf" },
+      { title: "建瓯新闻网：探访“中国根雕之都”", date: "2023-04-11", scope: "根雕制作与产业案例", url: "https://www.jrjonews.com/2023-04/11/content_1509348.htm" }
+    ]
+  },
+  nature: {
+    facts: [
+      { title: "保护地不等于普通景点", text: "万木林的公开资料强调数百年延续的民间护林传统和生态价值。介绍它时，应先说明保护意义，再讨论能够到达和观察的区域。" },
+      { title: "古村也在继续生活", text: "后山村与磨下村的报道同时记录传统建筑、地方历史和当代乡村建设，说明古村不是只供拍照的静态布景。" }
+    ],
+    boundary: "自然与乡村点位分散，旧报道中的道路、项目规划和开放状态不能直接当作当前出行依据。水域、林地和山地活动需额外核验天气、交通、管理边界与安全要求。",
+    sources: [
+      { title: "建瓯新闻网：万木林——穿越六百年的绿色守望", date: "2022-04-20", scope: "万木林历史与生态保护", url: "https://www.jrjonews.com/2022-04/20/content_1374004.htm" },
+      { title: "建瓯新闻网：万木林·辰山项目推进", date: "2025-08-01", scope: "保护与文旅项目的阶段性信息", url: "https://www.jrjonews.com/2025-08/01/content_2240922.htm" },
+      { title: "建瓯新闻网：后山村的古村新貌", date: "2025-11-27", scope: "传统建筑、地方历史与乡村生活", url: "https://www.jrjonews.com/2025-11/27/content_2284553.htm" },
+      { title: "建瓯新闻网：磨下村激活万里茶道水运记忆", date: "2026-05-07", scope: "古码头、茶道记忆与村庄建设", url: "https://www.jrjonews.com/2026-05/07/content_2338557.htm" }
+    ]
+  },
+  industry: {
+    facts: [
+      { title: "笋竹是重要产业线索", text: "2026年的地方报道从竹林培育、笋竹加工到竹制品创新梳理产业链，并以明确年份标注产值、专利等统计数据。" },
+      { title: "人的选择补足数字", text: "返乡木艺创业案例把本地竹木资源、设计生产和线上线下销售连接起来，为理解地方产业提供了企业与个人层面的切口。" }
+    ],
+    boundary: "产业数字必须连同统计年份、口径和来源一起使用；一家企业或一位创业者只是案例，不能代表整个行业。称号、产值、专利和销量等信息不得脱离原报道年份延用。",
+    sources: [
+      { title: "建瓯新闻网：一根竹的绿色富民产业", date: "2026-05-14", scope: "笋竹产业链与带年份的统计数据", url: "https://www.jrjonews.com/2026-05/14/content_2341040.htm" },
+      { title: "建瓯新闻网：建瓯笋竹产业指数发布", date: "2026-05-14", scope: "产业观察与指数信息", url: "https://www.jrjonews.com/2026-05/14/content_2341028.htm" },
+      { title: "建瓯新闻网：返乡青年汪林松的木艺创业", date: "2025-12-15", scope: "竹木设计、生产与返乡创业案例", url: "https://www.jrjonews.com/2025-12/15/content_2290377.htm" },
+      { title: "建瓯新闻网：探访“中国根雕之都”", date: "2023-04-11", scope: "根雕产业的阶段性情况", url: "https://www.jrjonews.com/2023-04/11/content_1509348.htm" }
+    ]
+  },
+  memory: {
+    facts: [
+      { title: "影像可以成为城市档案", text: "建瓯摄影者徐文亮自2012年起持续拍摄街道、旧招牌与城市变化，报道提到其积累照片超过8000张，为同地点对照提供了具体方法。" },
+      { title: "记忆需要多种声音", text: "古城保护报道同时出现居民、收藏者、经营者和管理者的讲述。把这些视角并置，比只用一段怀旧叙事更接近城市的真实变化。" }
+    ],
+    boundary: "老照片、录音和采访都需确认拍摄者、年代、地点与使用授权。个人回忆可能有偏差，一位受访者也不能代表全部居民；可核验史实应另附文献或实物依据。",
+    sources: [
+      { title: "建瓯新闻网：城市记忆的影像守望者", date: "2025-11-10", scope: "徐文亮的城市影像档案与拍摄方法", url: "https://www.jrjonews.com/2025-11/10/content_2278447.htm" },
+      { title: "建瓯新闻网：聚焦高质量发展｜千年建州古城走向活化复兴", date: "2025-04-25", scope: "居民、经营者与文化工作者的多方讲述", url: "https://www.jrjonews.com/2025-04/25/content_2203084.htm" },
+      { title: "建瓯新闻网：我在建瓯邂逅千年古城", date: "2026-03-02", scope: "古城修缮前后与人物记忆", url: "https://www.jrjonews.com/2026-03/02/content_2315266.htm" }
+    ]
+  },
+  experience: {
+    facts: [
+      { title: "从观看走向参与", text: "建州古城的官方介绍把非遗体验与市井生活列为景区内容；点茶传习所等空间则提供了器具展示、讲解和体验的具体场景。" },
+      { title: "活动有明确时间", text: "喊山、节庆展演和专题交流都有自己的举办日期。网页会保留报道日期，不把一次活动写成每天都能参加的常设项目。" }
+    ],
+    boundary: "本页只证明相关体验曾被公开报道，不承诺当前仍可预约。活动日期、场次、费用、人数限制和接待地点必须以主办方或场馆最新通知为准。",
+    sources: [
+      { title: "福建省文旅厅：建州古城景区介绍", date: "2026-03-30", scope: "古城文化地标与非遗体验概览", url: "https://wlt.fujian.gov.cn/zwgk/tzgg/gggs/202603/t20260330_7117179.htm" },
+      { title: "建瓯新闻网：凤冈别墅宋式点茶非遗传习所", date: "2025-03-28", scope: "点茶展示与体验场景", url: "https://www.jrjonews.com/2025-03/28/content_2191459.htm" },
+      { title: "建瓯新闻网：惊蛰喊山承古韵 北苑贡茶启新程", date: "2026-03-06", scope: "有明确日期的茶文化活动案例", url: "https://www.jrjonews.com/2026-03/06/content_2317266.htm" }
+    ]
+  }
+};
+
+// 每个入口都有单独的编辑焦点；后两张卡片由同主题资料包提供已核验的背景。
+const topicFocus = {
+  "ancient-city-scenic": { title: "本页焦点", text: "建州古城景区已于2026年3月获评国家4A级旅游景区。初步介绍从官方认定的核心街区和朱子文化地标展开。" },
+  "themes": { title: "八种观看方法", text: "八个主题是本网站对公开资料的编辑整理，用建筑、食物、茶、手艺、山水、产业、记忆与体验连接建瓯的历史和今天。" },
+  "routes": { title: "三条路线是提案", text: "古城、茶文化、山水乡村三条路线由网站根据内容节点编排，并非官方固定线路；顺序、交通和用时仍待实走。" },
+  "old-city": { title: "看见时间层次", text: "古城内容会把历史遗存、修缮复建和当代经营放在同一张时间表中，避免把今天看到的一切都笼统称为“古建筑”。" },
+  "food": { title: "先认识食物，再推荐门店", text: "公开资料可以确认建瓯的代表性饮食线索；具体哪家店、多少钱、何时营业，则要通过现场核验后再写入。" },
+  "tea": { title: "从遗址到今天", text: "北苑茶页面用御焙遗址说明历史空间，再以点茶传习与当代茶事说明传统如何被重新讲述和体验。" },
+  "craft": { title: "由人完成的传承", text: "建瓯挑幡有明确的国家级非遗依据；其他手艺将逐项核对项目级别、传承人和仍在进行的制作场景。" },
+  "nature": { title: "先保护，再游览", text: "万木林、北津湖和古村的性质不同，页面首先区分保护、生产与生活空间，再讨论游客能够安全抵达的区域。" },
+  "industry": { title: "数字必须带年份", text: "笋竹、根雕和竹木工艺的报道来自不同年份。页面保留时间标签，并用从业者案例解释统计数字背后的生产过程。" },
+  "memory": { title: "把变化变成证据", text: "老照片、同机位复拍与口述采访可以互相补充；照片来源和人物授权会与文字内容一同记录。" },
+  "experience": { title: "只承诺能够核实的体验", text: "点茶、展演和节庆活动会分成常设空间、预约体验与往期活动，避免读者误以为历史报道中的活动每天都有。" },
+  "breakfast": { title: "早餐仍需在地采集", text: "豆浆粉、粉丸与粿包先作为地方早餐线索建立页面，下一步重点补充真实店铺、制作过程、价格和拍摄日期。" },
+  "local-dishes": { title: "从菜名解释到做法", text: "大肠炒光饼已有公开的制作过程可作示例；珍珠纳底、冬笋挖底等菜名还要继续核对原料、方言写法与家庭差异。" },
+  "seasonal-produce": { title: "季节决定内容", text: "冬笋、锥栗等物产的采收时间和加工方式不同，页面会把上市季节、产地与当年统计口径分开记录。" },
+  "route-old-city": { title: "半日线的初步骨架", text: "路线以古城核心街区为依据，把城门、街巷和地方小吃串联起来；实际步数、休息点与开放时段仍需现场测试。" },
+  "route-tea": { title: "一片茶叶的顺序", text: "北苑、茶园、点茶、茶人四个节点分别回答地点、生长、技艺和人物问题，最终交通方案要根据预约和季节调整。" },
+  "route-nature": { title: "不能照着概念图直接出发", text: "北津湖、万木林与古村点位分散，这条一日线目前只是内容结构；没有完成道路、安全与开放核验前不提供导航承诺。" },
+  "tongxian": { title: "单体建筑要单独核史", text: "通仙门可以作为进入古城叙事的入口，但其年代、历次修缮与现存构件需要以文物资料和现场说明为准，不能只引用古城概述。" },
+  "tiejinglan": { title: "街区的历史与现在", text: "铁井栏—紫芝街是建州古城景区核心。修缮保留街巷尺度，也加入展馆和经营空间，适合同时观察保护与日常使用。" },
+  "zizhi": { title: "不把古街拍成空布景", text: "紫芝街页面除了建筑外，还会记录居民、店铺和不同时间段的街道状态，以呈现修复后继续生长的街区。" },
+  "local-snacks": { title: "一口味道的核验清单", text: "小吃专题先说明食材、口味与常见吃法；具体商家只有在地址、价格、营业状态和拍摄许可确认后才会成为推荐。" },
+  "beiyuan": { title: "北苑是具体地点", text: "御焙遗址位于东峰镇裴桥村焙前一带。页面以遗址、摩崖石刻和村落空间说明北苑，而不是只使用抽象的“千年茶史”口号。" },
+  "tea-garden": { title: "按季节记录劳动", text: "茶园拍摄将保留地点、日期、采摘季节和工序信息，避免用无法确认产地的通用茶园照片替代建瓯现场。" },
+  "diancha": { title: "把动作拆开讲清", text: "点茶传习所的公开报道提供了体验场景依据；正式页面将用器具、调膏、击拂等连续步骤帮助读者看懂过程。" },
+  "tea-people": { title: "一个人不是全部茶史", text: "茶农、制茶人和推广者各有不同工作。人物采访会保留其身份与具体经历，不用单个故事概括所有从业者。" },
+  "beijin-lake": { title: "规划信息不等于已经开放", text: "北津湖相关报道可帮助理解湖区生态与文旅方向，但步道、项目和可到达区域仍应以当期现场及管理信息为准。" },
+  "wanmu-forest": { title: "保护价值优先", text: "万木林的核心意义在长期护林传统和生态系统。任何游览建议都必须服从保护范围、管理规定和实际开放条件。" },
+  "ancient-villages": { title: "村庄不是景区布景", text: "后山、磨下等村的传统建筑与当代建设并存。拍摄与采访要尊重居民生活，并逐村核实道路和接待条件。" },
+  "rural-life": { title: "记录真实生产生活", text: "乡村内容不只选择“古朴”画面，也关注劳动、公共服务、返乡就业和村庄变化，避免把生活浪漫化。" },
+  "past-present": { title: "同机位对照需要证据", text: "现有城市影像档案为选题提供方法。旧照片必须确认拍摄者、年代和地点，复拍时尽量接近原机位并说明无法完全重合之处。" },
+  "old-shop": { title: "先征得店主同意", text: "老店专题将跟随备料、营业到收摊的完整一天；店史、顾客出镜、价格和经营信息都要由店主确认后发布。" },
+  "returning-youth": { title: "呈现选择，也呈现困难", text: "公开报道中的返乡木艺创业者提供了一个真实案例。后续采访不会把个体经历包装成适用于所有人的成功模板。" }
+};
+
+const bundleByTopic = {
+  "ancient-city-scenic": "ancient", themes: "overview", routes: "overview", "old-city": "ancient",
+  food: "food", tea: "tea", craft: "craft", nature: "nature", industry: "industry", memory: "memory", experience: "experience",
+  breakfast: "food", "local-dishes": "food", "seasonal-produce": "food",
+  "route-old-city": "ancient", "route-tea": "tea", "route-nature": "nature",
+  tongxian: "ancient", tiejinglan: "ancient", zizhi: "ancient", "local-snacks": "food",
+  beiyuan: "tea", "tea-garden": "tea", diancha: "tea", "tea-people": "tea",
+  "beijin-lake": "nature", "wanmu-forest": "nature", "ancient-villages": "nature", "rural-life": "nature",
+  "past-present": "memory", "old-shop": "memory", "returning-youth": "industry"
+};
+
 const labels = Object.fromEntries(Object.entries(topics).map(([slug, item]) => [slug, item.title]));
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("topic") || "";
@@ -127,12 +289,28 @@ if (!topic) {
   document.querySelector("#detail-summary").textContent = topic.summary;
   document.querySelector("#detail-intro").textContent = topic.intro;
   document.querySelector("#detail-description").textContent = topic.description;
-  document.querySelector("#detail-note").textContent = commonNote;
+  const research = researchBundles[bundleByTopic[slug] || "overview"];
+  document.querySelector("#detail-note").textContent = `${research.boundary}${commonNote}`;
 
   document.querySelector("#detail-meta").innerHTML = topic.meta
     .map(item => `<span>${item}</span>`).join("");
   document.querySelector("#detail-highlights").innerHTML = topic.highlights
     .map(item => `<li>${item}</li>`).join("");
+  document.querySelector("#detail-research").innerHTML = [topicFocus[slug], ...research.facts]
+    .filter(Boolean)
+    .map((item, index) => `
+      <article class="research-card">
+        <p class="research-card-index">NOTE ${String(index + 1).padStart(2, "0")}</p>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      </article>`).join("");
+  document.querySelector("#detail-sources").innerHTML = research.sources
+    .map(source => `
+      <a href="${source.url}" target="_blank" rel="noopener noreferrer">
+        <span class="source-title">${source.title}</span>
+        <span class="source-date">${source.date}</span>
+        <span class="source-scope">用于核验：${source.scope}</span>
+      </a>`).join("");
   document.querySelector("#related-links").innerHTML = topic.related
     .filter(item => topics[item])
     .map(item => `<a href="detail.html?topic=${item}">${labels[item]}</a>`).join("");

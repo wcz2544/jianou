@@ -24,6 +24,18 @@
 .highlight-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; list-style: none; }
 .highlight-list li { position: relative; padding: 20px 20px 20px 46px; border: 1px solid var(--line); background: var(--paper); }
 .highlight-list li::before { content: "↗"; position: absolute; left: 19px; top: 19px; color: var(--red); }
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.research-card { min-height: 220px; padding: 25px; border: 1px solid var(--line); background: var(--paper); }
+.research-card-index { margin: 0 0 28px; color: var(--red); font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+.research-card h3 { margin: 0 0 12px; font: 700 21px/1.45 var(--serif); }
+.research-card p:last-child { margin: 0; color: #60706a; font-size: 14px; line-height: 1.85; }
+.source-intro { margin: -8px 0 22px; }
+.source-list { display: grid; gap: 10px; }
+.source-list a { padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 20px; border: 1px solid var(--line); background: var(--paper); transition: border-color .2s, transform .2s; }
+.source-list a:hover { border-color: var(--red); transform: translateX(3px); }
+.source-title { color: var(--ink); font-weight: 700; }
+.source-date { color: var(--red); font-size: 11px; white-space: nowrap; }
+.source-scope { grid-column: 1 / -1; color: #60706a; font-size: 12px; }
 .related-section { margin-top: 70px; padding: 48px; color: white; background: var(--green); }
 .related-section .detail-section-kicker { color: #e5c56f; }
 .related-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -44,7 +56,10 @@
   .detail-hero h1, .detail-missing h1 { font-size: clamp(42px, 14vw, 64px); }
   .detail-intro { grid-template-columns: 1fr; margin-bottom: 55px; }
   .detail-section { grid-template-columns: 1fr; gap: 18px; padding: 42px 0; }
-  .highlight-list, .related-links { grid-template-columns: 1fr; }
+  .highlight-list, .research-grid, .related-links { grid-template-columns: 1fr; }
+  .research-card { min-height: auto; }
+  .source-list a { grid-template-columns: 1fr; }
+  .source-date, .source-scope { grid-column: 1; }
   .related-section { margin-top: 45px; padding: 30px 20px; }
   .detail-footer { flex-direction: column; }
 }
