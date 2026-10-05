@@ -124,14 +124,10 @@ button { font: inherit; }
 .quote-section blockquote { position: relative; margin: 0; font: 700 clamp(27px, 4vw, 52px)/1.55 var(--serif); }
 .quote-section p { position: relative; color: #e3ca87; font-size: 12px; letter-spacing: .12em; }
 .quote-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.quote-links a { padding-bottom: 3px; border-bottom: 1px solid transparent; }
-.quote-links a:hover { color: white; border-color: #e3ca87; }
-.practical { background: #ece2cf; }
-.notice-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.notice-grid > div { padding: 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.notice-grid span { color: var(--red); font-size: 11px; }
-.notice-grid h3 { font-family: var(--serif); }
-.notice-grid p { color: #68746f; font-size: 13px; }
+.quote-links .story-entry { min-width: min(100%, 360px); margin-top: 18px; padding: 15px 18px; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(227,202,135,.55); color: #e3ca87; text-align: left; transition: color .2s, background .2s, transform .2s; }
+.quote-links .story-entry b { color: rgba(255,255,255,.68); font-size: 10px; font-weight: 500; white-space: nowrap; }
+.quote-links .story-entry:hover { color: var(--green); background: #e3ca87; transform: translateY(-2px); }
+.quote-links .story-entry:hover b { color: var(--green); }
 
 .site-footer { padding: 70px clamp(24px, 8vw, 128px) 28px; display: grid; grid-template-columns: 2fr .8fr 1.2fr; gap: 7vw; color: rgba(255,255,255,.7); background: #102e27; font-size: 12px; }
 .footer-brand { color: white; }
@@ -180,7 +176,6 @@ button { font: inherit; }
   .taste-list b { grid-column: 3; grid-row: 1 / 3; }
   .route-card { grid-template-columns: 42px 1fr; gap: 10px; }
   .route-stops { grid-column: 1 / -1; padding-left: 52px; }
-  .notice-grid { grid-template-columns: 1fr; }
   .site-footer { grid-template-columns: 1fr; gap: 28px; }
   .copyright { grid-column: 1; }
 }
