@@ -271,30 +271,82 @@ const bundleByTopic = {
   "past-present": "memory", "old-shop": "memory", "returning-youth": "industry"
 };
 
-// 已核验的图片和视频放在这里；其他主题沿用同一版式并暂时留空。
+// 网络图片统一保存到项目内，页面只读取本地文件；来源页仍保留在图片说明中，便于追溯。
+const mediaAssets = {
+  ancientZizhi: { src: "assets/images/detail/topics/ancient-zizhi.jpg", alt: "建瓯紫芝街夜景", caption: "紫芝街夜间街区景观", credit: "图虫摄影", source: "https://tuchong.com/1348496/139785966/" },
+  ancientTongxian: { src: "assets/images/detail/topics/ancient-tongxian.jpeg", alt: "建瓯通仙门城楼", caption: "通仙门城楼与城墙", credit: "搜狐·福建新闻广播", source: "https://www.sohu.com/a/709061614_162522" },
+  ancientTiejinglan: { src: "assets/images/detail/topics/ancient-tiejinglan.jpg", alt: "建瓯铁井栏历史街区入口", caption: "铁井栏历史街区入口", credit: "爱游旅行网", source: "https://www.aiyoutravel.com/location/detail/0843c8a1ed60dea881edac22a70c4397" },
+  foodDachang: { src: "assets/images/detail/topics/food-dachang.jpg", alt: "建瓯大肠炒光饼", caption: "建瓯地方菜大肠炒光饼", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-07/01/content_2228818.htm" },
+  foodGuangbing: { src: "assets/images/detail/topics/food-guangbing.jpg", alt: "建瓯光饼", caption: "建瓯传统小吃光饼", credit: "今日建瓯", source: "https://www.jrjonews.com/2021-08/31/content_1147695.htm" },
+  foodBanyan: { src: "assets/images/detail/topics/food-banyan.png", alt: "建瓯板鸭", caption: "建瓯特色风味板鸭", credit: "东南网", source: "https://fjnews.fjsen.com/2023-01/05/content_31219577.htm" },
+  teaBeiyuan: { src: "assets/images/detail/topics/tea-beiyuan.png", alt: "建瓯北苑贡茶园景观", caption: "北苑贡茶文化相关茶园景观", credit: "搜狐·建瓯市融媒体中心", source: "https://www.sohu.com/a/827154937_121106994" },
+  teaGarden: { src: "assets/images/detail/topics/tea-garden.jpeg", alt: "建瓯茶园采茶场景", caption: "建瓯春茶采摘场景", credit: "搜狐·福建日报", source: "https://www.sohu.com/a/870861499_121119375" },
+  teaDiancha: { src: "assets/images/detail/topics/tea-diancha.jpg", alt: "宋式点茶展示", caption: "宋式点茶技艺展示", credit: "新华网", source: "https://www.xinhuanet.com/ci/20251120/92d349e4cbf04d0e9ae7cd723be2f6bc/c.html" },
+  craftTiaofan: { src: "assets/images/detail/topics/craft-tiaofan.jpeg", alt: "建瓯挑幡表演", caption: "建瓯挑幡非遗表演", credit: "搜狐·文化大观", source: "https://www.sohu.com/a/375031003_100197257" },
+  natureBeijin: { src: "assets/images/detail/topics/nature-beijin.jpg", alt: "建瓯北津湖湖面与岸线", caption: "北津湖湖面与周边景观", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-09/12/content_2258212.htm" },
+  natureWanmu: { src: "assets/images/detail/topics/nature-wanmu.jpg", alt: "建瓯万木林自然保护区森林", caption: "万木林自然保护区森林景观", credit: "国家林业和草原局", source: "https://www.forestry.gov.cn/c/www/kpzrbhd/524373.jhtml" },
+  natureVillage: { src: "assets/images/detail/topics/nature-village.png", alt: "建瓯后山村村落景观", caption: "后山村乡村景观", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-11/27/content_2284553.htm" },
+  industryChestnut: { src: "assets/images/detail/topics/industry-chestnut.jpg", alt: "建瓯锥栗采收", caption: "建瓯锥栗丰收场景", credit: "新三农", source: "https://www.xinsannong.com/a/7394bd.html" },
+  industryBamboo: { src: "assets/images/detail/topics/industry-bamboo-shoot.jpg", alt: "建瓯笋竹产品", caption: "建瓯笋竹产业相关产品", credit: "新福建", source: "https://www.fjdaily.com/app/content/2023-05/08/content_1874335.html" },
+  industryWoodcraft: { src: "assets/images/detail/topics/industry-woodcraft.jpg", alt: "建瓯竹木工艺创作", caption: "建瓯返乡青年参与竹木工艺创作", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-12/15/content_2290377.htm" },
+  memoryOldCity: { src: "assets/images/detail/topics/memory-flood-1998.jpg", alt: "1998年建瓯洪水历史影像", caption: "1998年建瓯洪水中的城市影像", credit: "中国方志网", source: "https://www.difangzhi.cn/ztzl/wljpzjzbhd/wzzjp/202404/t20240414_5746109.shtml" },
+  memoryDongyue: { src: "assets/images/detail/topics/memory-dongyue.jpg", alt: "建瓯东岳庙与城市景观", caption: "东岳庙与当代城市景观", credit: "图虫摄影", source: "https://tuchong.com/1348496/139741629/" },
+  memoryOldShop: { src: "assets/images/detail/topics/memory-old-shop.jpg", alt: "建瓯老店室内陈设", caption: "建瓯街巷中的老店空间", credit: "图虫摄影", source: "https://tuchong.com/1348496/139777058/" },
+  experienceMuseum: { src: "assets/images/detail/topics/experience-museum.png", alt: "建瓯展馆内茶文化体验", caption: "建瓯展馆中的茶文化展示与体验", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-05/20/content_2212418.htm" },
+  breakfastDoujiangfen: { src: "assets/images/detail/breakfast-doujiangfen.jpg", alt: "一碗建瓯豆浆粉", caption: "建瓯豆浆粉实物近景", credit: "特色谷", source: "https://www.tesegu.com/techan/50298.html" },
+  breakfastScene: { src: "assets/images/detail/breakfast-local-scene.png", alt: "建瓯当地早餐店内用餐场景", caption: "建瓯当地早餐场景", credit: "福建日报·新福建", source: "https://www.fjdaily.com/app/content/2025-04/15/content_3230709.html" }
+};
+
+const videos = {
+  city: { label: "观看建瓯古城影像", url: "https://www.douyin.com/video/7673755962054222836" },
+  tiejinglan: { label: "观看铁井栏街区影像", url: "https://www.douyin.com/video/7301159296849513767" },
+  food: { label: "观看建瓯地方美食合集", url: "https://www.bilibili.com/video/BV1BGXnBnEcy/" },
+  guangbing: { label: "观看建瓯光饼制作影像", url: "https://www.bilibili.com/video/BV1n64y1S7bE/" },
+  tea: { label: "观看北苑贡茶产区影像", url: "https://jingxuan.douyin.com/m/video/7584994766392708410" },
+  diancha: { label: "观看宋式点茶过程", url: "https://www.bilibili.com/video/BV1i3411p7Hx/" },
+  heritage: { label: "观看建瓯非遗与宋韵体验影像", url: "https://weibo.com/2/detail/5350349603079397" },
+  nature: { label: "观看建瓯万木林自然影像", url: "https://www.bilibili.com/video/BV1BW4y1c7Py/" },
+  beijin: { label: "观看福建省水利厅北津湖专题视频", url: "https://slt.fujian.gov.cn/ztzl/spzl/slfjq/202109/P020210913432827583804.mp4" },
+  chestnut: { label: "观看建瓯锥栗丰收影像", url: "https://www.douyin.com/video/7682728960513379647" },
+  memory: { label: "观看建瓯方言与城市记忆影像", url: "https://www.bilibili.com/video/av23405224/" },
+  breakfast: { label: "在小红书观看建瓯早餐视频", url: "https://www.xiaohongshu.com/explore/69490ace000000001e0350b2?xsec_token=CBijry1VMvtf-uILFfqw7NNAfHfPECTYlVGsGcl14gvRo=&xsec_source=app_share" }
+};
+
+// 多个入口可共享同一组可靠素材，但每个主题都必须有图片和强相关视频，不能再回退为空置位。
+const media = (images, video) => ({ images: images.map(key => mediaAssets[key]), video });
 const mediaByTopic = {
-  breakfast: {
-    images: [
-      {
-        src: "assets/images/detail/breakfast-doujiangfen.jpg",
-        alt: "一碗建瓯豆浆粉",
-        caption: "建瓯豆浆粉实物近景",
-        credit: "特色谷",
-        source: "https://www.tesegu.com/techan/50298.html"
-      },
-      {
-        src: "assets/images/detail/breakfast-local-scene.png",
-        alt: "建瓯当地早餐店内用餐场景",
-        caption: "建瓯当地早餐场景",
-        credit: "福建日报·新福建",
-        source: "https://www.fjdaily.com/app/content/2025-04/15/content_3230709.html"
-      }
-    ],
-    video: {
-      label: "在小红书观看建瓯早餐视频",
-      url: "https://www.xiaohongshu.com/explore/69490ace000000001e0350b2?xsec_token=CBijry1VMvtf-uILFfqw7NNAfHfPECTYlVGsGcl14gvRo=&xsec_source=app_share"
-    }
-  }
+  "ancient-city-scenic": media(["ancientTongxian", "ancientZizhi"], videos.city),
+  themes: media(["ancientZizhi", "teaBeiyuan"], videos.city),
+  routes: media(["ancientTongxian", "natureWanmu"], videos.city),
+  "old-city": media(["ancientTiejinglan", "ancientZizhi"], videos.city),
+  food: media(["foodDachang", "foodBanyan"], videos.food),
+  tea: media(["teaBeiyuan", "teaDiancha"], videos.tea),
+  craft: media(["craftTiaofan", "industryWoodcraft"], videos.heritage),
+  nature: media(["natureBeijin", "natureWanmu"], videos.nature),
+  industry: media(["industryBamboo", "industryChestnut"], videos.chestnut),
+  memory: media(["memoryOldCity", "memoryDongyue"], videos.memory),
+  experience: media(["experienceMuseum", "teaDiancha"], videos.heritage),
+  breakfast: media(["breakfastDoujiangfen", "breakfastScene"], videos.breakfast),
+  "local-dishes": media(["foodDachang", "foodBanyan"], videos.food),
+  "seasonal-produce": media(["industryChestnut", "industryBamboo"], videos.chestnut),
+  "route-old-city": media(["ancientTongxian", "ancientTiejinglan"], videos.city),
+  "route-tea": media(["teaBeiyuan", "teaGarden"], videos.tea),
+  "route-nature": media(["natureBeijin", "natureWanmu"], videos.nature),
+  tongxian: media(["ancientTongxian"], videos.city),
+  tiejinglan: media(["ancientTiejinglan"], videos.tiejinglan),
+  zizhi: media(["ancientZizhi"], videos.tiejinglan),
+  "local-snacks": media(["foodGuangbing", "breakfastDoujiangfen"], videos.guangbing),
+  beiyuan: media(["teaBeiyuan"], videos.tea),
+  "tea-garden": media(["teaGarden"], videos.tea),
+  diancha: media(["teaDiancha"], videos.diancha),
+  "tea-people": media(["teaGarden", "teaBeiyuan"], videos.tea),
+  "beijin-lake": media(["natureBeijin"], videos.beijin),
+  "wanmu-forest": media(["natureWanmu"], videos.nature),
+  "ancient-villages": media(["natureVillage"], videos.nature),
+  "rural-life": media(["natureVillage", "industryChestnut"], videos.nature),
+  "past-present": media(["memoryOldCity", "memoryDongyue"], videos.memory),
+  "old-shop": media(["memoryOldShop"], videos.memory),
+  "returning-youth": media(["industryWoodcraft"], videos.heritage)
 };
 
 const params = new URLSearchParams(window.location.search);
@@ -321,19 +373,17 @@ if (!topic) {
 
   document.querySelector("#detail-meta").innerHTML = topic.meta
     .map(item => `<span>${item}</span>`).join("");
-  const media = mediaByTopic[slug] || { images: [], video: null };
-  const imageCards = media.images.map(image => `
+  const topicMedia = mediaByTopic[slug];
+  const imageCards = topicMedia.images.map(image => `
     <figure class="detail-media-card">
       <img src="${image.src}" alt="${image.alt}" loading="lazy">
       <figcaption>${image.caption} · 图片来源：<a href="${image.source}" target="_blank" rel="noopener noreferrer">${image.credit}</a></figcaption>
     </figure>`);
-  while (imageCards.length < 2) {
-    imageCards.push('<div class="detail-media-placeholder" aria-label="图片位置待补充">图片位置待补充</div>');
-  }
-  document.querySelector("#detail-media-gallery").innerHTML = imageCards.join("");
-  document.querySelector("#detail-video-slot").innerHTML = media.video
-    ? `<a class="detail-video-link" href="${media.video.url}" target="_blank" rel="noopener noreferrer">${media.video.label}</a>`
-    : '<div class="detail-video-empty">视频链接待补充</div>';
+  const gallery = document.querySelector("#detail-media-gallery");
+  gallery.classList.toggle("is-single", imageCards.length === 1);
+  gallery.innerHTML = imageCards.join("");
+  document.querySelector("#detail-video-slot").innerHTML =
+    `<a class="detail-video-link" href="${topicMedia.video.url}" target="_blank" rel="noopener noreferrer">${topicMedia.video.label}</a>`;
   document.querySelector("#detail-sources").innerHTML = research.sources
     .map(source => `
       <a href="${source.url}" target="_blank" rel="noopener noreferrer">
