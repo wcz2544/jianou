@@ -33,7 +33,7 @@ button { font: inherit; }
 .menu-button { display: none; width: 44px; height: 44px; padding: 11px; border: 0; background: transparent; }
 .menu-button span:not(.sr-only) { display: block; height: 1px; margin: 6px 0; background: white; }
 
-.hero { position: relative; min-height: min(860px, 100vh); padding: 150px clamp(24px, 8vw, 128px) 88px; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr); align-items: center; gap: 5vw; color: var(--paper-light); background: var(--green); }
+.hero { position: relative; min-height: min(900px, 100vh); padding: 150px clamp(24px, 6vw, 96px) 88px; overflow: hidden; display: grid; grid-template-columns: minmax(320px, .68fr) minmax(0, 1.32fr); align-items: center; gap: 1vw; color: var(--paper-light); background: var(--green); }
 .hero-pattern { position: absolute; inset: 0; opacity: .1; background-image: linear-gradient(30deg, transparent 49.5%, #fff 49.5%, #fff 50.5%, transparent 50.5%), linear-gradient(150deg, transparent 49.5%, #fff 49.5%, #fff 50.5%, transparent 50.5%); background-size: 90px 52px; mask-image: linear-gradient(90deg, #000, transparent 55%); }
 .hero-content { position: relative; z-index: 2; max-width: 620px; }
 .eyebrow { margin: 0 0 22px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
@@ -45,17 +45,8 @@ button { font: inherit; }
 .button { display: inline-flex; padding: 13px 25px; border-radius: 2px; font-weight: 600; }
 .button-primary { color: var(--green); background: #e6c87a; }
 .text-link { padding-bottom: 2px; border-bottom: 1px solid rgba(255,255,255,.5); }
-.hero-art { position: relative; z-index: 1; height: min(550px, 60vw); min-height: 430px; border-radius: 48% 48% 4px 4px; overflow: hidden; background: linear-gradient(180deg, rgba(11,37,31,.03), rgba(11,37,31,.2)), url("../assets/images/hero-jianou.jpg") center 44% / cover no-repeat; box-shadow: 0 32px 80px rgba(0,0,0,.2); }
-.hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.08), transparent 30%), linear-gradient(0deg, rgba(10,40,34,.45), transparent 45%); }
-.hero-art .sun, .hero-art .mountain, .hero-art .gate { display: none; }
-.sun { position: absolute; top: 12%; right: 14%; width: 120px; height: 120px; border-radius: 50%; background: #f3df9f; }
-.mountain { position: absolute; left: -12%; width: 125%; height: 45%; clip-path: polygon(0 70%, 12% 47%, 23% 62%, 37% 25%, 50% 57%, 67% 18%, 78% 50%, 91% 31%, 100% 54%, 100% 100%, 0 100%); }
-.mountain-back { bottom: 30%; background: #8b493a; opacity: .8; }
-.mountain-front { bottom: 12%; background: #1d5c4e; clip-path: polygon(0 50%, 16% 32%, 30% 63%, 46% 15%, 59% 57%, 75% 30%, 89% 60%, 100% 39%, 100% 100%, 0 100%); }
-.gate { position: absolute; z-index: 2; right: 18%; bottom: 9%; width: 42%; height: 39%; background: #102f29; clip-path: polygon(10% 17%, 35% 17%, 43% 0, 57% 0, 65% 17%, 90% 17%, 100% 32%, 89% 32%, 89% 100%, 11% 100%, 11% 32%, 0 32%); }
-.gate i { position: absolute; bottom: 0; width: 18%; height: 47%; background: #d09b55; border-radius: 20px 20px 0 0; }
-.gate i:nth-child(1) { left: 16%; }.gate i:nth-child(2) { left: 41%; }.gate i:nth-child(3) { right: 16%; }
-.hero-art > p { position: absolute; z-index: 3; right: 20px; bottom: 15px; margin: 0; padding: 10px 7px; color: #fff; background: rgba(16,47,41,.62); writing-mode: vertical-rl; font-family: var(--serif); letter-spacing: .25em; }
+/* 五凤楼剪影占据右侧约三分之二的视觉区，与左侧文字保持独立列，避免互相遮挡。 */
+.hero-art { position: relative; z-index: 1; width: 100%; height: min(690px, 72vw); min-height: 540px; align-self: end; background: url("../assets/images/hero-wufeng-cutout.png") right bottom / contain no-repeat; filter: drop-shadow(0 34px 32px rgba(0,0,0,.28)); }
 .hero-note { position: absolute; right: clamp(24px, 5vw, 72px); bottom: 22px; left: clamp(24px, 5vw, 72px); display: flex; justify-content: space-between; color: rgba(255,255,255,.45); font-size: 10px; letter-spacing: .14em; }
 
 .section { padding: clamp(80px, 10vw, 145px) clamp(24px, 8vw, 128px); }
@@ -141,7 +132,7 @@ button { font: inherit; }
 @media (max-width: 980px) {
   .hero { grid-template-columns: 1fr; padding-top: 130px; }
   .hero-content { max-width: 680px; }
-  .hero-art { width: min(100%, 620px); height: 520px; justify-self: end; }
+  .hero-art { width: min(100%, 760px); height: min(720px, 92vw); min-height: 520px; justify-self: center; background-position: center bottom; }
   .story-grid { grid-template-columns: repeat(2, 1fr); }
   .intro, .feature { grid-template-columns: 1fr; }
   .feature-visual { min-height: 450px; }
@@ -160,7 +151,7 @@ button { font: inherit; }
   .hero { min-height: auto; padding: 120px 20px 75px; }
   .hero h1 { font-size: clamp(52px, 17vw, 76px); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 15px; }
-  .hero-art { min-height: 370px; height: 105vw; }
+  .hero-art { width: 100%; min-height: 330px; height: 102vw; }
   .hero-note { display: none; }
   .section { padding: 75px 20px; }
   .intro { gap: 25px; }

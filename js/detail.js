@@ -1,6 +1,4 @@
 // 首页所有可点击入口共用这一份主题数据，后续扩写时只需要修改对应条目。
-const commonNote = "本页为公开资料整理形成的初步介绍，不替代景区、场馆、商家或管理单位的实时通知。开放时间、门票、交通、预约、价格和当期活动可能变化，正式出发前请再次向相关单位核验。";
-
 const topics = {
   "ancient-city-scenic": {
     title: "建州古城景区", eyebrow: "4A SCENIC AREA · 认识古城", summary: "从城门、街巷与人文地标进入千年建州。", meta: ["国家4A级旅游景区", "建瓯古城", "信息核验：2026-03"],
@@ -61,7 +59,7 @@ const topics = {
 
   "breakfast": {
     title: "早餐小吃", eyebrow: "MORNING FLAVOURS · 一日之始", summary: "豆浆粉、粉丸与粿包，是许多人认识建瓯味道的第一口。", meta: ["豆浆粉", "粉丸", "粿包"],
-    intro: "早餐最接近日常，也最容易唤起离乡者关于家乡的具体记忆。", description: "专题将说明食材、口味、常见吃法与制作过程，再补充经过核验的店铺、地址、价格和更新时间。",
+    intro: "早餐最接近日常，也最容易唤起离乡者关于家乡的具体记忆。", description: "",
     highlights: ["豆浆粉的汤底与米粉", "粉丸和粿包的原料与口感", "记录本地人的不同吃法", "店铺信息上线前再次核验"], related: ["food", "local-snacks", "route-old-city"]
   },
   "local-dishes": {
@@ -109,7 +107,7 @@ const topics = {
   "returning-youth": { title: "返乡青年的选择", eyebrow: "RETURNING HOME · 人物故事", summary: "从个人选择理解家乡的新工作、新生活与新可能。", meta: ["返乡", "青年", "人物采访"], intro: "返乡不是单一成功模板，每个人的原因、困难和路径都不同。", description: "采访将围绕为什么回来、正在做什么、遇到什么现实问题，以及如何看待家乡变化展开。", highlights: ["尊重个人真实动机", "记录工作和生活现场", "呈现困难而非只写励志", "采访内容交由本人确认"], related: ["memory", "industry", "tea-people"] }
 };
 
-// 资料包按主题共享可靠来源；每个详情页再叠加自己的专题焦点，避免只有一段通用占位文字。
+// 资料包按主题共享可靠来源，详情页只展示其中可复核的出处。
 const researchBundles = {
   overview: {
     facts: [
@@ -144,6 +142,8 @@ const researchBundles = {
     boundary: "地方食物存在家庭做法、店铺做法与名称差异。当前页面介绍品类，不构成餐馆排名；具体门店、价格、营业时间、过敏原与卫生信息必须在发布推荐前逐项核验。",
     sources: [
       { title: "福建省商务厅：县域重点产业链招商手册·建瓯", date: "持续更新页面", scope: "建瓯概况、物产与地方美食线索", url: "https://fdi.swt.fj.gov.cn/county-show-409.html" },
+      { title: "建瓯新闻网：我本建州｜建州传统早餐——豆浆粉", date: "2025-04-10", scope: "豆浆粉的地方早餐背景", url: "https://www.jrjonews.com/2025-04/10/content_2196251.htm" },
+      { title: "福建日报：建瓯‘豆浆粉’亮相央视《三餐四季》", date: "2025-04-15", scope: "豆浆粉与当地早餐场景", url: "https://www.fjdaily.com/app/content/2025-04/15/content_3230709.html" },
       { title: "建瓯新闻网：大肠炒光饼", date: "2025-07-01", scope: "菜品特点与基本制作过程", url: "https://www.jrjonews.com/2025-07/01/content_2228818.htm" }
     ]
   },
@@ -271,7 +271,32 @@ const bundleByTopic = {
   "past-present": "memory", "old-shop": "memory", "returning-youth": "industry"
 };
 
-const labels = Object.fromEntries(Object.entries(topics).map(([slug, item]) => [slug, item.title]));
+// 已核验的图片和视频放在这里；其他主题沿用同一版式并暂时留空。
+const mediaByTopic = {
+  breakfast: {
+    images: [
+      {
+        src: "assets/images/detail/breakfast-doujiangfen.jpg",
+        alt: "一碗建瓯豆浆粉",
+        caption: "建瓯豆浆粉实物近景",
+        credit: "特色谷",
+        source: "https://www.tesegu.com/techan/50298.html"
+      },
+      {
+        src: "assets/images/detail/breakfast-local-scene.png",
+        alt: "建瓯当地早餐店内用餐场景",
+        caption: "建瓯当地早餐场景",
+        credit: "福建日报·新福建",
+        source: "https://www.fjdaily.com/app/content/2025-04/15/content_3230709.html"
+      }
+    ],
+    video: {
+      label: "在小红书观看建瓯早餐视频",
+      url: "https://www.xiaohongshu.com/explore/69490ace000000001e0350b2?xsec_token=CBijry1VMvtf-uILFfqw7NNAfHfPECTYlVGsGcl14gvRo=&xsec_source=app_share"
+    }
+  }
+};
+
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("topic") || "";
 const topic = topics[slug];
@@ -288,22 +313,27 @@ if (!topic) {
   document.querySelector("#detail-title").textContent = topic.title;
   document.querySelector("#detail-summary").textContent = topic.summary;
   document.querySelector("#detail-intro").textContent = topic.intro;
-  document.querySelector("#detail-description").textContent = topic.description;
+  const description = document.querySelector("#detail-description");
+  description.textContent = topic.description;
+  description.hidden = !topic.description;
+  document.querySelector(".detail-intro").classList.toggle("is-single", !topic.description);
   const research = researchBundles[bundleByTopic[slug] || "overview"];
-  document.querySelector("#detail-note").textContent = `${research.boundary}${commonNote}`;
 
   document.querySelector("#detail-meta").innerHTML = topic.meta
     .map(item => `<span>${item}</span>`).join("");
-  document.querySelector("#detail-highlights").innerHTML = topic.highlights
-    .map(item => `<li>${item}</li>`).join("");
-  document.querySelector("#detail-research").innerHTML = [topicFocus[slug], ...research.facts]
-    .filter(Boolean)
-    .map((item, index) => `
-      <article class="research-card">
-        <p class="research-card-index">NOTE ${String(index + 1).padStart(2, "0")}</p>
-        <h3>${item.title}</h3>
-        <p>${item.text}</p>
-      </article>`).join("");
+  const media = mediaByTopic[slug] || { images: [], video: null };
+  const imageCards = media.images.map(image => `
+    <figure class="detail-media-card">
+      <img src="${image.src}" alt="${image.alt}" loading="lazy">
+      <figcaption>${image.caption} · 图片来源：<a href="${image.source}" target="_blank" rel="noopener noreferrer">${image.credit}</a></figcaption>
+    </figure>`);
+  while (imageCards.length < 2) {
+    imageCards.push('<div class="detail-media-placeholder" aria-label="图片位置待补充">图片位置待补充</div>');
+  }
+  document.querySelector("#detail-media-gallery").innerHTML = imageCards.join("");
+  document.querySelector("#detail-video-slot").innerHTML = media.video
+    ? `<a class="detail-video-link" href="${media.video.url}" target="_blank" rel="noopener noreferrer">${media.video.label}</a>`
+    : '<div class="detail-video-empty">视频链接待补充</div>';
   document.querySelector("#detail-sources").innerHTML = research.sources
     .map(source => `
       <a href="${source.url}" target="_blank" rel="noopener noreferrer">
@@ -311,7 +341,4 @@ if (!topic) {
         <span class="source-date">${source.date}</span>
         <span class="source-scope">用于核验：${source.scope}</span>
       </a>`).join("");
-  document.querySelector("#related-links").innerHTML = topic.related
-    .filter(item => topics[item])
-    .map(item => `<a href="detail.html?topic=${item}">${labels[item]}</a>`).join("");
 }
