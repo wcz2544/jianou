@@ -22,14 +22,24 @@
 .detail-section-kicker { margin: 0 0 8px; color: var(--red); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
 .detail-section h2 { margin: 0 0 25px; font: 700 clamp(29px, 3.5vw, 46px)/1.35 var(--serif); }
 .detail-section > div:last-child > p:last-child { max-width: 800px; color: #60706a; }
-/* 双图并排；只有一张强相关图片时使用宽幅卡片，避免为了凑数加入弱相关素材。 */
+/* 图片专题可使用单图、双图或“竖幅双图＋横幅细节”的三图组合。 */
 .detail-media-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .detail-media-gallery.is-single { grid-template-columns: minmax(0, 760px); }
+.detail-media-gallery.is-three .detail-media-card.is-wide { grid-column: 1 / -1; }
 .detail-media-card { min-height: 330px; border: 1px solid var(--line); background: var(--paper); }
 .detail-media-card { margin: 0; overflow: hidden; }
 .detail-media-card img { width: 100%; aspect-ratio: 4 / 3; display: block; object-fit: cover; }
+.detail-media-card.is-portrait img { aspect-ratio: 3 / 4; }
+.detail-media-card.is-wide img { aspect-ratio: 16 / 7; }
 .detail-media-card figcaption { padding: 14px 16px 16px; color: #60706a; font-size: 12px; }
 .detail-media-card figcaption a { color: var(--red); border-bottom: 1px solid currentColor; }
+.detail-user-credit { color: var(--red); font-weight: 700; }
+/* 规划、方法和人物类主题改用文字卡片，不再强行套用双图模板。 */
+.detail-text-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.detail-text-card { min-height: 190px; padding: 24px; border: 1px solid var(--line); background: var(--paper); }
+.detail-text-index { display: block; margin-bottom: 28px; color: var(--red); font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+.detail-text-card h3 { margin: 0 0 10px; font: 700 24px/1.35 var(--serif); }
+.detail-text-card p { margin: 0; color: #60706a; font-size: 13px; }
 .detail-video-slot { margin-top: 14px; }
 .detail-video-link { min-height: 84px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid var(--line); background: var(--paper); }
 .detail-video-link { color: var(--ink); font-weight: 700; transition: border-color .2s, transform .2s; }
@@ -56,7 +66,10 @@
   .detail-intro { grid-template-columns: 1fr; margin-bottom: 55px; }
   .detail-section { grid-template-columns: 1fr; gap: 18px; padding: 42px 0; }
   .detail-media-gallery { grid-template-columns: 1fr; }
+  .detail-media-gallery.is-three .detail-media-card.is-wide { grid-column: 1; }
   .detail-media-card { min-height: 250px; }
+  .detail-text-grid { grid-template-columns: 1fr; }
+  .detail-text-card { min-height: 0; }
   .detail-video-link { align-items: flex-start; flex-direction: column; gap: 8px; }
   .source-list a { grid-template-columns: 1fr; }
   .source-date, .source-scope { grid-column: 1; }

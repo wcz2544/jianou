@@ -273,7 +273,13 @@ const bundleByTopic = {
 
 // 网络图片统一保存到项目内，页面只读取本地文件；来源页仍保留在图片说明中，便于追溯。
 const mediaAssets = {
-  ancientZizhi: { src: "assets/images/detail/topics/ancient-zizhi.jpg", alt: "建瓯紫芝街夜景", caption: "紫芝街夜间街区景观", credit: "图虫摄影", source: "https://tuchong.com/1348496/139785966/" },
+  providedTongxianPlaque: { src: "assets/images/detail/provided/tongxian-plaque.jpg", alt: "通仙门匾额与彩绘细节", caption: "通仙门匾额与建筑彩绘细节", credit: "用户提供" },
+  providedInscription: { src: "assets/images/detail/provided/ancient-inscription.jpg", alt: "建瓯古建筑匾额与彩绘", caption: "古建筑匾额、木构和彩绘细节", credit: "用户提供", orientation: "wide" },
+  providedGulouhou: { src: "assets/images/detail/provided/gulouhou-gate.jpg", alt: "建瓯鼓楼后牌楼夜景", caption: "鼓楼后街巷牌楼夜景", credit: "用户提供", orientation: "portrait" },
+  providedFuqian: { src: "assets/images/detail/provided/fuqian-gate.jpg", alt: "建瓯府前牌楼夜景", caption: "府前街巷牌楼夜景", credit: "用户提供", orientation: "portrait" },
+  providedWufeng: { src: "assets/images/detail/provided/wufeng-night.jpg", alt: "建瓯五凤楼正面夜景", caption: "五凤楼正面夜景", credit: "用户提供", orientation: "portrait" },
+  providedTiejinglan: { src: "assets/images/detail/provided/tiejinglan-night.jpg", alt: "建瓯铁井栏牌楼夜景", caption: "铁井栏街区牌楼夜景", credit: "用户提供", orientation: "portrait" },
+  ancientZizhi: { src: "assets/images/detail/topics/ancient-zizhi.jpg", alt: "建瓯紫芝街夜景", caption: "紫芝街夜间街区景观", credit: "图虫摄影", source: "https://tuchong.com/1348496/139785966/", orientation: "portrait" },
   ancientTongxian: { src: "assets/images/detail/topics/ancient-tongxian.jpeg", alt: "建瓯通仙门城楼", caption: "通仙门城楼与城墙", credit: "搜狐·福建新闻广播", source: "https://www.sohu.com/a/709061614_162522" },
   ancientTiejinglan: { src: "assets/images/detail/topics/ancient-tiejinglan.jpg", alt: "建瓯铁井栏历史街区入口", caption: "铁井栏历史街区入口", credit: "爱游旅行网", source: "https://www.aiyoutravel.com/location/detail/0843c8a1ed60dea881edac22a70c4397" },
   foodDachang: { src: "assets/images/detail/topics/food-dachang.jpg", alt: "建瓯大肠炒光饼", caption: "建瓯地方菜大肠炒光饼", credit: "今日建瓯", source: "https://www.jrjonews.com/2025-07/01/content_2228818.htm" },
@@ -312,13 +318,99 @@ const videos = {
   breakfast: { label: "在小红书观看建瓯早餐视频", url: "https://www.xiaohongshu.com/explore/69490ace000000001e0350b2?xsec_token=CBijry1VMvtf-uILFfqw7NNAfHfPECTYlVGsGcl14gvRo=&xsec_source=app_share" }
 };
 
+// 每个详情页使用与主题对应的标题，彻底移除重复的“内容看点”。
+const contentHeadingByTopic = {
+  "ancient-city-scenic": "建州古城影像", themes: "八种认识建瓯的方式", routes: "三条路线怎么走", "old-city": "古城建筑与街巷",
+  food: "一桌建州味", tea: "从北苑到一盏茶", craft: "活着的手艺", nature: "城墙之外的山水",
+  industry: "土地、产品与人", memory: "保存城市记忆的方法", experience: "今天怎样参与建州文化",
+  breakfast: "建瓯人的早餐桌", "local-dishes": "建州地方菜", "seasonal-produce": "跟着季节吃建瓯",
+  "route-old-city": "古城半日漫步", "route-tea": "一片茶叶的旅程", "route-nature": "山水乡村一日线",
+  tongxian: "通仙门建筑细节", tiejinglan: "铁井栏街巷夜色", zizhi: "紫芝街的烟火日常", "local-snacks": "古城里的一口建瓯",
+  beiyuan: "北苑贡茶故地", "tea-garden": "茶园里的四季劳动", diancha: "宋式点茶的器与技", "tea-people": "今天的建瓯茶人",
+  "beijin-lake": "北津湖山水", "wanmu-forest": "万木林生态", "ancient-villages": "古村落里的时间", "rural-life": "乡村生活观察",
+  "past-present": "旧影与新城", "old-shop": "老店的一天", "returning-youth": "回到家乡之后"
+};
+
+// 这些主题更适合用结构化文字说明，避免32页都呈现相同的“双图＋链接”。
+const textContentByTopic = {
+  themes: {
+    kicker: "CONTENT MAP · 内容地图",
+    items: [
+      { title: "古城与味道", text: "从城门、街巷与地方餐桌进入建瓯，先认识最贴近日常的空间和味觉。" },
+      { title: "茶与手艺", text: "通过北苑贡茶、宋式点茶、挑幡与竹木工艺，看传统如何由今天的人继续完成。" },
+      { title: "山水与产业", text: "把北津湖、万木林、乡村物产和生产过程放在同一幅地方图景中。" },
+      { title: "记忆与体验", text: "用老照片、方言、人物和当代活动，让历史与今天发生联系。" }
+    ]
+  },
+  routes: {
+    kicker: "ROUTE NOTES · 路线提案",
+    items: [
+      { title: "古城与家乡味", text: "通仙门—铁井栏—紫芝街—地方小吃，适合半日步行，开放时间仍需出发前核验。" },
+      { title: "跟着一片茶叶", text: "北苑—茶园—点茶—茶人故事，以地点、生长、技艺和人物串起茶文化。" },
+      { title: "走出城墙以后", text: "北津湖—万木林—古村落—乡村生活，点位分散，实际交通需单独规划。" }
+    ]
+  },
+  memory: {
+    kicker: "MEMORY METHODS · 记忆采集",
+    items: [
+      { title: "旧照片复拍", text: "确认旧照年代、地点和拍摄者，再尽量回到相近机位记录今天。" },
+      { title: "保存地方声音", text: "记录方言、街巷环境声和普通话解释，让声音成为城市档案。" },
+      { title: "跟拍一间老店", text: "从开门、备料到收摊，观察劳动、顾客与街区之间的关系。" },
+      { title: "让讲述者确认", text: "人物采访、照片署名和使用范围均由提供者确认后再发布。" }
+    ]
+  },
+  experience: {
+    kicker: "HOW TO JOIN · 参与方式",
+    items: [
+      { title: "常设空间", text: "博物馆、展馆和历史街区可作为认识建州文化的稳定入口。" },
+      { title: "预约体验", text: "点茶、拓印与手作课程需核实接待人数、费用和预约方式。" },
+      { title: "限时活动", text: "节庆、展演和市集必须保留活动日期，不写成全年常态项目。" },
+      { title: "出发前确认", text: "开放时间、交通和当期安排以主办方最新信息为准。" }
+    ]
+  },
+  "tea-people": {
+    kicker: "PEOPLE OF TEA · 人物采访",
+    items: [
+      { title: "一天怎样开始", text: "从茶农、制茶人或讲解者一天的工作流程进入人物，而不是先写宏大茶史。" },
+      { title: "技艺怎样学会", text: "记录学习来源、关键工序和长期练习，让经验变得具体可见。" },
+      { title: "今天怎样理解北苑", text: "允许不同从业者表达不同观点，不用一个故事代表全部建瓯茶人。" }
+    ]
+  },
+  "rural-life": {
+    kicker: "FIELD NOTES · 乡村观察",
+    items: [
+      { title: "真实劳动", text: "记录种植、采收、加工与运输，不只寻找风景化的田园画面。" },
+      { title: "不同年龄的人", text: "关注留村者、返乡者、老人和年轻人的不同生活节奏。" },
+      { title: "变化与日常", text: "公共服务、产业变化和节庆活动都要注明时间与具体背景。" },
+      { title: "尊重拍摄边界", text: "进入生产和居住空间前征得同意，避免打扰村民生活。" }
+    ]
+  },
+  "old-shop": {
+    kicker: "A DAY AT THE SHOP · 跟拍提纲",
+    items: [
+      { title: "开门与备料", text: "记录一天从何时开始，原料和工具怎样准备。" },
+      { title: "营业中的关系", text: "观察熟客、街坊和店主之间长期形成的地方联系。" },
+      { title: "收摊以后", text: "用清洁、盘点和店主讲述补全一间老店的完整一天。" }
+    ]
+  },
+  "returning-youth": {
+    kicker: "COMING HOME · 人物线索",
+    items: [
+      { title: "为什么回来", text: "从个人经历、家庭关系和对家乡的判断理解返乡选择。" },
+      { title: "回来做什么", text: "具体呈现产品、工作流程、合作伙伴与服务对象。" },
+      { title: "遇到哪些困难", text: "同时记录资金、市场、人才与生活适应，不把个体包装成单一成功模板。" },
+      { title: "家乡因此改变什么", text: "用可以核验的小变化说明个人选择与地方发展的联系。" }
+    ]
+  }
+};
+
 // 多个入口可共享同一组可靠素材，但每个主题都必须有图片和强相关视频，不能再回退为空置位。
 const media = (images, video) => ({ images: images.map(key => mediaAssets[key]), video });
 const mediaByTopic = {
-  "ancient-city-scenic": media(["ancientTongxian", "ancientZizhi"], videos.city),
+  "ancient-city-scenic": media(["providedWufeng", "providedTiejinglan"], videos.city),
   themes: media(["ancientZizhi", "teaBeiyuan"], videos.city),
   routes: media(["ancientTongxian", "natureWanmu"], videos.city),
-  "old-city": media(["ancientTiejinglan", "ancientZizhi"], videos.city),
+  "old-city": media(["providedGulouhou", "providedFuqian", "providedInscription"], videos.city),
   food: media(["foodDachang", "foodBanyan"], videos.food),
   tea: media(["teaBeiyuan", "teaDiancha"], videos.tea),
   craft: media(["craftTiaofan", "industryWoodcraft"], videos.heritage),
@@ -329,12 +421,12 @@ const mediaByTopic = {
   breakfast: media(["breakfastDoujiangfen", "breakfastScene"], videos.breakfast),
   "local-dishes": media(["foodDachang", "foodBanyan"], videos.food),
   "seasonal-produce": media(["industryChestnut", "industryBamboo"], videos.chestnut),
-  "route-old-city": media(["ancientTongxian", "ancientTiejinglan"], videos.city),
+  "route-old-city": media(["providedWufeng", "providedTiejinglan"], videos.city),
   "route-tea": media(["teaBeiyuan", "teaGarden"], videos.tea),
   "route-nature": media(["natureBeijin", "natureWanmu"], videos.nature),
-  tongxian: media(["ancientTongxian"], videos.city),
-  tiejinglan: media(["ancientTiejinglan"], videos.tiejinglan),
-  zizhi: media(["ancientZizhi"], videos.tiejinglan),
+  tongxian: media(["ancientTongxian", "providedTongxianPlaque"], videos.city),
+  tiejinglan: media(["providedTiejinglan", "providedGulouhou"], videos.tiejinglan),
+  zizhi: media(["ancientZizhi", "providedFuqian"], videos.tiejinglan),
   "local-snacks": media(["foodGuangbing", "breakfastDoujiangfen"], videos.guangbing),
   beiyuan: media(["teaBeiyuan"], videos.tea),
   "tea-garden": media(["teaGarden"], videos.tea),
@@ -373,15 +465,37 @@ if (!topic) {
 
   document.querySelector("#detail-meta").innerHTML = topic.meta
     .map(item => `<span>${item}</span>`).join("");
+  const textContent = textContentByTopic[slug];
   const topicMedia = mediaByTopic[slug];
-  const imageCards = topicMedia.images.map(image => `
-    <figure class="detail-media-card">
-      <img src="${image.src}" alt="${image.alt}" loading="lazy">
-      <figcaption>${image.caption} · 图片来源：<a href="${image.source}" target="_blank" rel="noopener noreferrer">${image.credit}</a></figcaption>
-    </figure>`);
-  const gallery = document.querySelector("#detail-media-gallery");
-  gallery.classList.toggle("is-single", imageCards.length === 1);
-  gallery.innerHTML = imageCards.join("");
+  document.querySelector("#highlights-title").textContent = contentHeadingByTopic[slug];
+  document.querySelector("#highlights-kicker").textContent = textContent?.kicker || "PHOTO ESSAY · 主题影像";
+  const contentRoot = document.querySelector("#detail-media-gallery");
+
+  if (textContent) {
+    contentRoot.className = "detail-text-grid";
+    contentRoot.innerHTML = textContent.items.map((item, index) => `
+      <article class="detail-text-card">
+        <span class="detail-text-index">${String(index + 1).padStart(2, "0")}</span>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      </article>`).join("");
+  } else {
+    const imageCards = topicMedia.images.map(image => {
+      const orientationClass = image.orientation ? ` is-${image.orientation}` : "";
+      const credit = image.source
+        ? `<a href="${image.source}" target="_blank" rel="noopener noreferrer">${image.credit}</a>`
+        : `<span class="detail-user-credit">${image.credit}</span>`;
+      return `
+        <figure class="detail-media-card${orientationClass}">
+          <img src="${image.src}" alt="${image.alt}" loading="lazy">
+          <figcaption>${image.caption} · 图片来源：${credit}</figcaption>
+        </figure>`;
+    });
+    contentRoot.className = "detail-media-gallery";
+    contentRoot.classList.toggle("is-single", imageCards.length === 1);
+    contentRoot.classList.toggle("is-three", imageCards.length === 3);
+    contentRoot.innerHTML = imageCards.join("");
+  }
   document.querySelector("#detail-video-slot").innerHTML =
     `<a class="detail-video-link" href="${topicMedia.video.url}" target="_blank" rel="noopener noreferrer">${topicMedia.video.label}</a>`;
   document.querySelector("#detail-sources").innerHTML = research.sources

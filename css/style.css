@@ -45,8 +45,8 @@ button { font: inherit; }
 .button { display: inline-flex; padding: 13px 25px; border-radius: 2px; font-weight: 600; }
 .button-primary { color: var(--green); background: #e6c87a; }
 .text-link { padding-bottom: 2px; border-bottom: 1px solid rgba(255,255,255,.5); }
-/* 五凤楼剪影占据右侧约三分之二的视觉区，与左侧文字保持独立列，避免互相遮挡。 */
-.hero-art { position: relative; z-index: 1; width: 100%; height: min(690px, 72vw); min-height: 540px; align-self: end; background: url("../assets/images/hero-wufeng-cutout.png") right bottom / contain no-repeat; filter: drop-shadow(0 34px 32px rgba(0,0,0,.28)); }
+/* 桌面端聚焦五凤楼上部建筑并放大至右侧视觉区；文字与建筑仍处于独立网格列。 */
+.hero-art { position: relative; z-index: 1; width: 100%; height: min(720px, 74vw); min-height: 570px; align-self: end; background: url("../assets/images/hero-wufeng-cutout.png") center 16% / 110% auto no-repeat; filter: drop-shadow(0 34px 32px rgba(0,0,0,.28)); }
 .hero-note { position: absolute; right: clamp(24px, 5vw, 72px); bottom: 22px; left: clamp(24px, 5vw, 72px); display: flex; justify-content: space-between; color: rgba(255,255,255,.45); font-size: 10px; letter-spacing: .14em; }
 
 .section { padding: clamp(80px, 10vw, 145px) clamp(24px, 8vw, 128px); }
@@ -132,7 +132,7 @@ button { font: inherit; }
 @media (max-width: 980px) {
   .hero { grid-template-columns: 1fr; padding-top: 130px; }
   .hero-content { max-width: 680px; }
-  .hero-art { width: min(100%, 760px); height: min(720px, 92vw); min-height: 520px; justify-self: center; background-position: center bottom; }
+  .hero-art { width: min(100%, 760px); height: min(720px, 92vw); min-height: 520px; justify-self: center; background-size: contain; background-position: center bottom; }
   .story-grid { grid-template-columns: repeat(2, 1fr); }
   .intro, .feature { grid-template-columns: 1fr; }
   .feature-visual { min-height: 450px; }
