@@ -6,21 +6,30 @@ const stories = [
   { slug: "craft", title: "非遗与手艺", category: "culture", tag: "人在传承", symbol: "艺", color: "#8b583a", text: "看挑幡、版画、唱曲子和扎纸如何留在日常里。" },
   { slug: "nature", title: "乡村与山水", category: "nature", tag: "城外建瓯", symbol: "山", color: "#397065", text: "去湖畔、森林和古村，看见更辽阔的家乡。" },
   { slug: "industry", title: "物产与产业", category: "nature", tag: "建瓯出品", symbol: "竹", color: "#71804f", text: "一根竹、一颗锥栗和一门木艺，连起土地与今天。" },
-  { slug: "memory", title: "城市记忆", category: "city", tag: "旧影新声", symbol: "忆", color: "#775145", text: "老照片、方言、店招与人物，保存城市变化的温度。" },
+  { slug: "memory", title: "城市记忆", category: "city", tag: "旧影新声", symbol: "忆", color: "#c7c9b3", cover: "assets/images/home/city-memory-original.jpg", text: "老照片、方言、店招与人物，保存城市变化的温度。" },
   { slug: "experience", title: "当代体验", category: "culture", tag: "正在发生", symbol: "游", color: "#b66b3c", text: "点茶、拓印、展馆与演艺，遇见当下的建州。" }
 ];
 
 const grid = document.querySelector("#story-grid");
 
 function renderStories() {
-  grid.innerHTML = stories.map((story, index) => `
-    <a class="story-card" href="detail.html?topic=${story.slug}" data-category="${story.category}" data-symbol="${story.symbol}" style="--card-color:${story.color}" aria-label="查看${story.title}介绍">
-      <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
-      <p class="tag">${story.tag}</p>
-      <h3>${story.title}</h3>
-      <p>${story.text}</p>
-    </a>
-  `).join("");
+  grid.innerHTML = stories.map((story, index) => {
+    // 城市记忆使用用户指定的原邮票图；其余主题仍保留原来的色块识别方式。
+    const cover = story.cover
+      ? `<img class="story-card-cover" src="${story.cover}" alt="" loading="lazy">`
+      : "";
+    const coverClass = story.cover ? " story-card--cover" : "";
+
+    return `
+      <a class="story-card${coverClass}" href="detail.html?topic=${story.slug}" data-category="${story.category}" data-symbol="${story.symbol}" style="--card-color:${story.color}" aria-label="查看${story.title}介绍">
+        ${cover}
+        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
+        <p class="tag">${story.tag}</p>
+        <h3>${story.title}</h3>
+        <p>${story.text}</p>
+      </a>
+    `;
+  }).join("");
 }
 
 renderStories();

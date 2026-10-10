@@ -5,7 +5,8 @@
 .story-hero { position: relative; min-height: 660px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr); overflow: hidden; color: white; background: var(--green); }
 .story-hero::before { content: "“"; position: absolute; left: -35px; bottom: -230px; opacity: .045; font: 900 650px/1 var(--serif); }
 .story-hero-content { position: relative; z-index: 2; padding: clamp(75px, 9vw, 135px) clamp(24px, 8vw, 125px); align-self: center; }
-.story-hero-image { position: relative; min-height: 660px; background: #eadfd4 url("../assets/images/story-architecture-series.jpg") center / contain no-repeat; }
+/* 封面图片留白与文字侧使用同一深绿底色，避免左右两块背景割裂。 */
+.story-hero-image { position: relative; min-height: 660px; background: var(--green) url("../assets/images/story-architecture-series.jpg") center / contain no-repeat; }
 .story-eyebrow { margin: 0 0 20px; color: #e5c56f; font-size: 11px; font-weight: 700; letter-spacing: .2em; }
 .story-hero h1 { margin: 0; font: 900 clamp(55px, 7vw, 104px)/1.13 var(--serif); letter-spacing: -.045em; }
 .story-hero h1 em { color: #e5c56f; font-style: normal; }

@@ -51,6 +51,7 @@ button { font: inherit; }
 
 .section { padding: clamp(80px, 10vw, 145px) clamp(24px, 8vw, 128px); }
 .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; background: var(--paper-light); }
+.intro .section-heading { display: flex; flex-direction: column; }
 .section-heading h2, .feature h2 { margin: 0; font: 700 clamp(38px, 5vw, 72px)/1.22 var(--serif); letter-spacing: -.04em; }
 .section-heading.compact { max-width: 780px; margin-bottom: 52px; }
 .section-heading.compact h2 { font-size: clamp(34px, 4vw, 56px); }
@@ -63,7 +64,13 @@ button { font: inherit; }
 .facts strong { display: block; color: var(--red); font: 700 32px/1 var(--serif); }
 .facts span { display: block; margin-top: 10px; color: #6b7773; font-size: 12px; }
 
-.explore { background: #ede4d3; }
+/* 四张鼓楼插画均为透明底，各自承担不同板块的视觉锚点，避免重复堆叠。 */
+.section-art { display: block; max-width: 100%; pointer-events: none; user-select: none; }
+.section-art--intro { width: clamp(220px, 25vw, 360px); margin: 54px auto 0; }
+
+.explore { position: relative; overflow: hidden; background: #ede4d3; }
+.explore > :not(.section-art) { position: relative; z-index: 1; }
+.section-art--explore { position: absolute; top: 92px; right: clamp(24px, 8vw, 128px); width: clamp(210px, 22vw, 330px); opacity: .72; transform: rotate(1.5deg); }
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
 .filter { padding: 8px 18px; color: var(--ink); border: 1px solid var(--line); border-radius: 99px; background: transparent; cursor: pointer; }
 .filter:hover, .filter.is-active { color: white; border-color: var(--green); background: var(--green); }
@@ -77,10 +84,16 @@ button { font: inherit; }
 .story-card .tag { align-self: flex-start; margin: 0 0 9px; padding: 3px 9px; color: var(--ink); background: #edcf80; font-size: 10px; }
 .story-card h3 { margin: 0; font: 700 27px/1.3 var(--serif); }
 .story-card p { margin: 10px 0 0; opacity: .78; font-size: 13px; }
+.story-card-cover { position: absolute; inset: 0 0 auto; z-index: 0; width: 100%; height: 70%; padding: 12px 12px 0; object-fit: contain; object-position: center top; background: #c7c9b3; mix-blend-mode: multiply; }
+.story-card--cover::before { display: none; }
+.story-card--cover::after { z-index: 1; background: linear-gradient(0deg, rgba(23,63,53,.98) 0 34%, rgba(23,63,53,.72) 48%, rgba(23,63,53,0) 76%); }
+.story-card--cover > :not(.story-card-cover) { z-index: 2; }
+.story-card--cover .card-index { padding: 6px 8px; background: rgba(23,63,53,.78); }
 
 .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 9vw; align-items: center; background: var(--red); color: white; }
 .feature .eyebrow { color: #f0d38a; }
 .feature-visual { position: relative; min-height: 550px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(255,255,255,.28); background: radial-gradient(circle at 50% 35%, #d77a5b 0 20%, transparent 21%), repeating-radial-gradient(circle at 50% 60%, transparent 0 44px, rgba(255,255,255,.07) 45px 46px); }
+.section-art--taste { position: absolute; top: 26px; left: 28px; width: min(43%, 270px); opacity: .58; }
 .feature-visual > p { position: absolute; right: 24px; bottom: 20px; margin: 0; font-family: var(--serif); letter-spacing: .3em; writing-mode: vertical-rl; }
 .bowl { position: relative; width: 300px; height: 145px; margin-top: 85px; border-radius: 10px 10px 150px 150px; background: #f4e4c5; box-shadow: inset 0 12px #e8c981, 0 18px 0 rgba(86,28,23,.25); }
 .bowl::before { content: ""; position: absolute; top: -16px; left: 12px; width: calc(100% - 24px); height: 40px; border-radius: 50%; background: #e2b961; border: 8px solid #f4e4c5; }
@@ -95,7 +108,9 @@ button { font: inherit; }
 .taste-list b { color: #f0d38a; font-weight: 400; }
 .taste-list span, .taste-list small { color: rgba(255,255,255,.55); }
 
-.routes { background: var(--paper-light); }
+.routes { position: relative; overflow: hidden; background: var(--paper-light); }
+.routes > :not(.section-art) { position: relative; z-index: 1; }
+.section-art--routes { position: absolute; top: 82px; right: clamp(24px, 8vw, 128px); width: clamp(190px, 20vw, 300px); opacity: .72; }
 .route-list { border-top: 1px solid var(--line); }
 .route-card { display: grid; grid-template-columns: 80px minmax(280px, .8fr) 1fr; gap: 3vw; align-items: center; padding: 34px 0; border-bottom: 1px solid var(--line); }
 .route-number { color: var(--red); font: 700 30px/1 var(--serif); }
@@ -147,19 +162,23 @@ button { font: inherit; }
   .site-nav a { font: 600 26px/1.4 var(--serif); }
   .nav-cta { font-size: 17px !important; }
   body.menu-open { overflow: hidden; }
-  .hero { min-height: auto; padding: 120px 20px 75px; }
+  /* 手机端取消首屏底部留白，让五凤楼四个落地点贴住下一板块分界线。 */
+  .hero { min-height: auto; padding: 120px 20px 0; }
   .hero h1 { font-size: clamp(52px, 17vw, 76px); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 15px; }
   .hero-art { width: 100%; min-height: 330px; height: 102vw; }
   .hero-note { display: none; }
   .section { padding: 75px 20px; }
   .intro { gap: 25px; }
+  .section-art--intro { width: min(78vw, 340px); margin-top: 42px; }
+  .section-art--explore, .section-art--routes { position: relative; top: auto; right: auto; width: min(76vw, 320px); margin: -26px 0 36px auto; opacity: .86; transform: none; }
   .facts { gap: 7px; }
   .facts strong { font-size: 26px; }
   .story-grid { grid-template-columns: 1fr; }
   .story-card { min-height: 300px; }
   .feature { gap: 55px; }
   .feature-visual { min-height: 390px; }
+  .section-art--taste { top: 20px; left: 16px; width: min(52%, 210px); opacity: .48; }
   .bowl { transform: scale(.8); }
   .taste-list a { grid-template-columns: 40px 1fr 24px; }
   .taste-list small { grid-column: 2; }
