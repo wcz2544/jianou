@@ -87,14 +87,13 @@ button { font: inherit; }
 .bowl i { position: absolute; top: 55px; left: 110px; width: 80px; height: 40px; border-radius: 50%; border: 3px solid var(--red); }
 .steam { position: absolute; z-index: 2; top: 80px; width: 70px; height: 160px; border: solid rgba(255,255,255,.65); border-width: 0 0 0 3px; border-radius: 50%; transform: rotate(20deg); }
 .steam-one { left: 43%; }.steam-two { left: 55%; top: 110px; transform: scale(.75) rotate(-20deg); }
-.feature-copy > p:not(.eyebrow):not(.status-note) { max-width: 600px; color: rgba(255,255,255,.75); }
+.feature-copy > p:not(.eyebrow) { max-width: 600px; color: rgba(255,255,255,.75); }
 .taste-list { margin: 38px 0 28px; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.25); }
 .taste-list li { border-bottom: 1px solid rgba(255,255,255,.25); }
 .taste-list a { display: grid; grid-template-columns: 46px 1fr 1.4fr 24px; align-items: center; padding: 17px 0; transition: padding .2s, background .2s; }
 .taste-list a:hover { padding-right: 10px; padding-left: 10px; background: rgba(255,255,255,.08); }
 .taste-list b { color: #f0d38a; font-weight: 400; }
 .taste-list span, .taste-list small { color: rgba(255,255,255,.55); }
-.status-note { font-size: 11px; opacity: .6; }
 
 .routes { background: var(--paper-light); }
 .route-list { border-top: 1px solid var(--line); }
